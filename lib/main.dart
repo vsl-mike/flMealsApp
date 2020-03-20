@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import './categories_screen.dart';
-import './category_item_screen.dart';
+import './screens/categories_screen.dart';
+import './screens/category_item_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  //new 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
