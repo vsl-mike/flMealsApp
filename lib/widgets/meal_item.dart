@@ -22,7 +22,6 @@ class MealItem extends StatelessWidget {
       onTap: getMealScreen,
       child: Container(
         padding: EdgeInsets.all(10),
-        height: heightOfCard,
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -32,17 +31,21 @@ class MealItem extends StatelessWidget {
           ),
           elevation: 4,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Stack(
                 children: <Widget>[
                   ClipRRect(
                     child: Image.network(
                       meals[index].imageUrl,
-                      height: heightOfCard * 0.75,
+                      height: 250,
                       width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15),
+                    ),
                   ),
                   Positioned(
                     right: 10,
@@ -54,7 +57,10 @@ class MealItem extends StatelessWidget {
                       child: Text(
                         meals[index].title,
                         textAlign: TextAlign.end,
-                        style: TextStyle(fontSize: 26, fontFamily: 'Raleway'),
+                        style: TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontFamily: 'Raleway'),
                         overflow: TextOverflow.fade,
                         softWrap: true,
                       ),
@@ -62,47 +68,49 @@ class MealItem extends StatelessWidget {
                   ),
                 ],
               ),
-              Expanded(
-                child: Container(
-                  color: Color.fromRGBO(245, 250, 200, 0.7),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.timer),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(meals[index].duration.toString()),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.attach_money),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            mealAffordability(meals[index].affordability),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.work),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            mealComplexity(meals[index].complexity),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+              //Expanded(
+              //child:
+              Container(
+                height: 50,
+                color: Color.fromRGBO(245, 250, 200, 0.7),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.av_timer),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(meals[index].duration.toString()),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.attach_money),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          mealAffordability(meals[index].affordability),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.restaurant),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          mealComplexity(meals[index].complexity),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
+              //),
             ],
           ),
         ),
