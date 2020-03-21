@@ -10,11 +10,6 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Recepies'),
-      ),
-      body: CategoryItem(goToCategoryItemScreen: _goToCategoryItemScreen),
-    );
+    return CategoryItem(goToCategoryItemScreen: _goToCategoryItemScreen);
   }
 }
