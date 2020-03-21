@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:proj/screens/meal_detail_screen.dart';
 import '../models/meal.dart';
 import '../dummy_data.dart';
 import '../widgets/meal_item.dart';
 
 class CategoryItemScreen extends StatelessWidget {
   static const routeName = '/categories_item';
-  void _getMealScreen() {}
+  void _getMealScreen(BuildContext context, Meal meal) {
+    Navigator.pushNamed(context, MealDetailScreen.routeName, arguments: meal);
+  }
+
   String get mealAffordability {
     return ' ';
   }
@@ -61,8 +65,7 @@ class CategoryItemScreen extends StatelessWidget {
         itemCount: _meals.length,
         itemBuilder: (ctx, _index) {
           return MealItem(
-            meals: _meals,
-            index: _index,
+            meal: _meals[_index],
             mealComplexity: _mealComplexity,
             mealAffordability: _mealAffordability,
             getMealScreen: _getMealScreen,
