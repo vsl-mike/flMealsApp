@@ -9,14 +9,19 @@ class TabsScreen extends StatefulWidget {
   _TabsScreenState createState() => _TabsScreenState();
 }
 
-List<Map<String, Object>> pages = [
-  {'widget': CategoryScreen(), 'title': 'Categories'},
-  {'widget': FavoritesScreen(), 'title': 'Favorites'},
-];
-
 int _currentPageIndex = 0;
 
 class _TabsScreenState extends State<TabsScreen> {
+  List<Map<String, Object>> pages;
+  @override
+  void initState() {
+    pages = [
+      {'widget': CategoryScreen(), 'title': 'Categories'},
+      {'widget': FavoritesScreen(), 'title': 'Favorites'},
+    ];
+    super.initState();
+  }
+
   void selectTab(int index) {
     setState(() {
       _currentPageIndex = index;

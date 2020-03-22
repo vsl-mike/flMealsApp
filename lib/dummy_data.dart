@@ -87,7 +87,7 @@ const DUMMY_MEALS = const [
       'Feel free to add some cheese on top of the finished dish.'
     ],
     isGlutenFree: false,
-    isVegan: true,
+    isVegan: false,
     isVegetarian: true,
     isLactoseFree: true,
   ),
@@ -219,7 +219,7 @@ const DUMMY_MEALS = const [
     ],
     isGlutenFree: true,
     isVegan: false,
-    isVegetarian: true,
+    isVegetarian: false,
     isLactoseFree: true,
   ),
   Meal(
