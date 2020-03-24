@@ -6,7 +6,8 @@ import '../widgets/meal_item.dart';
 class CategoryItemScreen extends StatelessWidget {
   static const routeName = '/categories_item';
   final List<Meal> listMeals;
-  CategoryItemScreen({this.listMeals});
+  final Function addFavorite;
+  CategoryItemScreen({this.listMeals,this.addFavorite});
   void _getMealScreen(BuildContext context, Meal meal) {
     Navigator.pushNamed(context, MealDetailScreen.routeName, arguments: meal);
   }

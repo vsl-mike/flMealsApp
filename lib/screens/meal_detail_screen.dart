@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import '../models/meal.dart';
 
-class MealDetailScreen extends StatelessWidget {
+class MealDetailScreen extends StatefulWidget {
   static const routeName = '/meals_detail_screen';
+  final Function addFavorite;
+  final Function isFavorite;
+  MealDetailScreen(this.addFavorite,this.isFavorite);
 
+  @override
+  _MealDetailScreenState createState() => _MealDetailScreenState();
+}
+
+class _MealDetailScreenState extends State<MealDetailScreen> {
   Widget buildText(String text) {
     return Container(
       padding: EdgeInsets.only(top: 30, bottom: 5),
@@ -29,10 +37,9 @@ class MealDetailScreen extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: color,
-      ),
-        
+          borderRadius: BorderRadius.circular(15),
+          color: color,
+        ),
         child: child,
       ),
     );
@@ -44,6 +51,17 @@ class MealDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
+        actions: <Widget>[
+          widget.isFavorite(meal)
+          ? IconButton(
+              icon: Icon(Icons.star),
+              onPressed: () => widget.addFavorite(meal),
+            )
+          : IconButton(
+              icon: Icon(Icons.star_border),
+              onPressed: () => widget.addFavorite(meal),
+            ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -63,10 +81,10 @@ class MealDetailScreen extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                       color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(5),
+                    margin: EdgeInsets.all(10),
                     child: Text(
                       meal.ingredients[index],
                       //style: ,
@@ -108,6 +126,7 @@ class MealDetailScreen extends StatelessWidget {
                 itemCount: meal.steps.length,
               ),
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),
